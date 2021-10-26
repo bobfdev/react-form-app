@@ -13,7 +13,7 @@ function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://react-http-6b4a6.firebaseio.com/movies.json');
+      const response = await fetch('https://react-movie-project-e1694-default-rtdb.firebaseio.com/movies.json');
       if (!response.ok) {
         throw new Error('Something went wrong!');
       }
@@ -23,12 +23,12 @@ function App() {
       const loadedMovies = [];
 
       for (const key in data) {
-        loadedMovies.push({
-          id: key,
-          title: data[key].title,
-          openingText: data[key].openingText,
-          releaseDate: data[key].releaseDate,
-        });
+          loadedMovies.push({
+            id: key,
+            title: data[key].title,
+            openingText: data[key].openingText,
+            releaseDate: data[key].releaseDate,
+          });
       }
 
       setMovies(loadedMovies);
@@ -43,7 +43,7 @@ function App() {
   }, [fetchMoviesHandler]);
 
   async function addMovieHandler(movie) {
-    const response = await fetch('https://react-http-6b4a6.firebaseio.com/movies.json', {
+    const response = await fetch('https://react-movie-project-e1694-default-rtdb.firebaseio.com/movies.json', {
       method: 'POST',
       body: JSON.stringify(movie),
       headers: {
